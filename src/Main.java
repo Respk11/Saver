@@ -26,7 +26,17 @@ public class Main {
         saveGame("D://Games/savegames/save2.dat", gProgress2);
         saveGame("D://Games/savegames/save3.dat", gProgress3);
         zipFiles("D://Games/savegames/zip.zip", "D://Games/savegames");
+        cleanFolder("D://Games/savegames");
 
+    }
+
+    private static void cleanFolder(String folderPAth) {
+        File folder = new File(folderPAth);
+        for (File file: folder.listFiles()){
+            if (file.getName().contains(".dat")) {
+                file.delete();
+            }
+        }
     }
 
     private static void Create(String nameFile) {
@@ -65,7 +75,7 @@ public class Main {
                     zout.write(buffer);
                     zout.closeEntry();
                     fis.close();
-                    file.delete();
+//                    file.delete();
                 }
             }
 
